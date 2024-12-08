@@ -10,6 +10,14 @@ fun Any.consumeInput(name: String, action: (Int, String) -> Unit) {
     }
 }
 
+fun Any.loadGrid(name: String): Array<CharArray> {
+    val linesList = mutableListOf<CharArray>()
+    consumeInput(name) { _, line ->
+        linesList.add(line.toCharArray())
+    }
+    return linesList.toTypedArray()
+}
+
 tailrec fun gcd(x: Long, y: Long): Long {
     return if (y == 0L) x else gcd(y, x % y)
 }

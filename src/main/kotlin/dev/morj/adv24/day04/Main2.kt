@@ -1,20 +1,16 @@
 package dev.morj.adv24.day04
 
-import dev.morj.adv24.lib.consumeInput
+import dev.morj.adv24.lib.loadGrid
 
 object Main2 {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val linesList = mutableListOf<CharArray>()
-        consumeInput("day-04") { _, line ->
-            linesList.add(line.toCharArray())
-        }
-        val data = linesList.toTypedArray()
+        val data = loadGrid("day-04")
         var result = 0
         val word = "MAS".toCharArray().toList()
         val midpoints = mutableSetOf<Pair<Int, Int>>()
-        linesList.forEachIndexed { x, line ->
+        data.forEachIndexed { x, line ->
             line.forEachIndexed { y, _ ->
                 result += search(midpoints, word, data, x, y, 1, -1, mutableListOf())
                 result += search(midpoints, word, data, x, y, 1, 1, mutableListOf())

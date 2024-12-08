@@ -1,16 +1,12 @@
 package dev.morj.adv24.day08
 
-import dev.morj.adv24.lib.consumeInput
 import dev.morj.adv24.lib.gcd
+import dev.morj.adv24.lib.loadGrid
 
 object Main2 {
     @JvmStatic
     fun main(args: Array<String>) {
-        val linesList = mutableListOf<CharArray>()
-        consumeInput("day-08") { _, line ->
-            linesList.add(line.toCharArray())
-        }
-        val data = linesList.toTypedArray()
+        val data = loadGrid("day-08")
         var result = 0
         val maxX = data.size
         val maxY = data[0].size
