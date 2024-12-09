@@ -22,32 +22,21 @@ object Main2 {
                 position += blockSize
             }
         }
-        // printAll(blocks)
         val move = blocks.entries.reversed()
         move.forEach { (position, block) ->
-            var e: MutableMap.MutableEntry<Int, Int>? = null
+            var e: Map.Entry<Int, Int>? = null
             for (dest in freeSpace) {
                 if (dest.value >= block.size) {
                     e = dest
                     break
                 }
             }
-            /*if (block.size == 1) {
-                println(e)
-                println(position to block)
-            }*/
             if (e != null && e.key < position) {
                 val newPosition = e.key
                 val freeSpaceSize = e.value
-                if (blocks[newPosition] != null) {
-                    throw IllegalStateException("Unexpected block ${blocks[newPosition]}")
-                }
                 freeSpace.remove(newPosition)
                 blocks.remove(position)
                 if (freeSpaceSize > block.size) {
-                    if (freeSpace[newPosition + block.size] != null) {
-                        throw IllegalStateException()
-                    }
                     freeSpace[newPosition + block.size] = freeSpaceSize - block.size
                 }
                 blocks[newPosition] = block
