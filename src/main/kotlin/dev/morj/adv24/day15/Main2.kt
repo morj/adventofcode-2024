@@ -6,7 +6,7 @@ import java.lang.IllegalStateException
 object Main2 {
     @JvmStatic
     fun main(args: Array<String>) {
-        val (data, commands) = loadGrid2("day15")
+        val (data, commands) = loadGrid2("day-15")
         var (rx, ry) = printData(data)
         println()
         commands.forEach { commandline ->

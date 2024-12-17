@@ -5,7 +5,7 @@ import dev.morj.adv24.lib.consumeInput
 object Main1 {
     @JvmStatic
     fun main(args: Array<String>) {
-        val (data, commands) = loadGrid2("day15")
+        val (data, commands) = loadGrid2("day-15")
         var (rx, ry) = printData(data)
         println()
         commands.forEach { commandline ->
