@@ -19,7 +19,6 @@ object Main1 {
         if (towels.distinct().size != towels.size) throw IllegalArgumentException("Towels must be distinct")
         val maxChunk = towels.maxOf { it.length }
         println("max chunk: $maxChunk")
-        // println(match("bwurrg", 0, maxChunk, towels, mutableSetOf()))
         val result = targets.count {
             match(it, 0, maxChunk, towels, mutableSetOf())/*.also { println(it) }*/
         }
@@ -31,8 +30,7 @@ object Main1 {
     ): Boolean {
         val chunk = target.substring(offset, (offset + maxChunk).coerceAtMost(target.length))
         towels.forEach { towel ->
-            if (/*!used.contains(towel) &&*/ chunk.startsWith(towel)) {
-                // used.add(towel)
+            if (chunk.startsWith(towel)) {
                 val newOffset = offset + towel.length
                 if (newOffset == target.length) {
                     return true
@@ -40,7 +38,6 @@ object Main1 {
                 if (match(target, newOffset, maxChunk, towels, used)) {
                     return true
                 }
-                // used.remove(towel)
             }
         }
         return false

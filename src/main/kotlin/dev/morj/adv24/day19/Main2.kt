@@ -28,9 +28,7 @@ object Main2 {
     private fun match(
         target: String, offset: Int, maxChunk: Int, towels: List<String>, cache: MutableMap<Pair<String, Int>, Long>
     ): Long {
-        cache[target to offset]?.let {
-            return it
-        }
+        cache[target to offset]?.let { return it }
         val chunk = target.substring(offset, (offset + maxChunk).coerceAtMost(target.length))
         var result = 0L
         towels.forEach { towel ->
