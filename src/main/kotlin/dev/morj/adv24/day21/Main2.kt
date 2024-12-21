@@ -55,9 +55,7 @@ object Main2 {
             if (index != split.size - 1) {
                 var r = Long.MAX_VALUE
                 val command = s + "A"
-                val presses = mutableListOf<String>()
-                allPresses(pad, command, start, "") { presses.add(it) }
-                presses.forEach {
+                allPresses(pad, command, start, "") {
                     val q = allPressesQ(pad, it, start, cache, depth + 1, acc)
                     if (q < r) r = q
                     if (r == Long.MAX_VALUE) { throw IllegalStateException() }
