@@ -17,23 +17,8 @@ object Main2 {
         }
         println(nodes)
         println(routes)
-        var count = 0L
         val candidates = mutableListOf<MutableSet<String>>()
-        nodes.forEachIndexed { i, x ->
-            nodes.forEachIndexed { j, y ->
-                if (j > i) {
-                    nodes.forEachIndexed { k, z ->
-                        if (k > j) {
-                            if (routes.contains(x to y) && routes.contains(y to z) && routes.contains(z to x)) {
-                                candidates.add(mutableSetOf(x, y, z))
-                                count++
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        println("triples found: $count")
+        candidates.addAll(nodes.map { mutableSetOf(it) })
         candidates.forEach { set ->
             nodes.forEach { node ->
                 if (!set.contains(node) && set.all { s -> routes.contains(s to node) }) {
